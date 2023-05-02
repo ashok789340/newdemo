@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<style>
+label {
+	display: inline-block;
+	width: 180px;
+}
+
+input, select {
+	display: inline-block;
+	margin-bottom: 8px;
+}
+
+body {
+	background-image:
+		url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr9N7oImenO_Xp4C2REYQTa1CDvr8GXCi68NjrD3pfVg&usqp=CAU&ec=48665701');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+h1 {
+	text-decoration: underline;
+}
+
+h1 {
+	color: DarkOliveGreen;
+}
+</style>
+</head>
+<body>
+
+	<!-- Create HTML registration form -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+
+				<!-- success message -->
+				<div th:if="${param.success}">
+					<div class="alert alert-info">You've successfully registered
+						to our awesome app!</div>
+				</div>
+				<img
+					src="https://wwwd601d2yq4c.cdn.e2enetworks.net/content/company_logo/1106201908-47-49aadvi-logo.png"
+					alt="description of the image">
+
+				<h1 style="text-align: center;">Candidate Information</h1>
+
+				<p style="color: blue;">Please fill this below details to
+					Register.</p>
+				<br>
+
+
+				<form th:action="@{/registration}" method="post" th:object="${user}">
+
+					<div class="form-group">
+						<label class="control-label" for="firstName"> First Name </label>
+						<input id="firstName" class="form-control" th:field="*{firstName}"
+							required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="lastName"> Last Name </label> <input
+							id="lastName" class="form-control" th:field="*{lastName}"
+							required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="email"> Email </label> <input
+							id="email" class="form-control" th:field="*{email}" required
+							autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="password"> Password </label> <input
+							id="password" class="form-control" type="password"
+							th:field="*{password}" required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label for="contactNumber">Contact Number:</label> <input
+							type="tel" id="contactNumber" name="contactNumber"
+							th:field="*{contactNumber}" required autofocus="autofocus">
+					</div>
+
+					<label for="alternateNumber">Alternate Number:</label> <input
+						type="tel" id="alternateNumber" name="alternateNumber"><br>
+
+					<label for="yearsOfExperience">Years of Experience:</label> <input
+						type="number" id="yearsOfExperience" name="yearsOfExperience"
+						required><br> <label for="address">Address:</label> <input
+						type="text" id="address" name="address" required><br>
+
+					<label for="gender">Gender:</label> <select id="gender"
+						name="gender" required>
+						<option value="" disabled selected>Select Gender</option>
+						<option value="MALE">Male</option>
+						<option value="FEMALE">Female</option>
+						<option value="OTHER">Other</option>
+					</select><br> <label for="age">Age:</label> <input type="text" id="age"
+						name="age" required><br> <label for="birthDate">BirthDate:</label>
+					<input type="text" id="birthDate" name="birthDate" required><br>
+
+					<label for="company">Company:</label> <input type="text"
+						id="company" name="company" required><br> <label
+						for="currentSalary">CurrentSalary:</label> <input type="text"
+						id="currentSalary" name="currentSalary" required><br>
+
+					<label for="expectedSalary">ExpectedSalary:</label> <input
+						type="text" id="expectedSalary" name="expectedSalary" required><br>
+
+					<label for="preferredWorkLocation">PreferredWorkLocation:</label> <input
+						type="text" id="preferredWorkLocation"
+						name="preferredWorkLocation" required><br> <label
+						for="officeNoticePeriod">OfficeNoticePeriod:</label> <input
+						type="text" id="officeNoticePeriod" name="officeNoticePeriod"
+						required><br> <label for="negotiatedNoticePeriod">NegotiatedNoticePeriod:</label>
+					<input type="text" id="negotiatedNoticePeriod"
+						name="negotiatedNoticePeriod" required><br> <label
+						for="state">State:</label> <input type="text" id="state"
+						name="state" required><br> <label for="pincode">Pincode:</label>
+					<input type="text" id="pincode" name="pincode" required><br>
+
+					<label for="country">Country:</label> <input type="text"
+						id="country" name="country" required><br> <label
+						for="comments">Comments:</label> <input type="text" id="comments"
+						name="comments" required><br>
+
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-success">Submit</button>
+						<span>Already Submitted? <a href="/" th:href="@{/login}">Login
+								here</a></span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
